@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>前世リーディング | Twinkle Star Oracle</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0a0e1a;--navy2:#0f1628;--gold:#c9a84c;--gold2:#e8c97a;--gold3:#f5e0a0;--white:#f0eadc;--teal:#7fd4c4;--teal2:#a8ece0;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background-color:var(--navy);color:var(--white);font-family:'Noto Serif JP',serif;min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 40%,rgba(127,212,196,0.07) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(180,140,60,0.06) 0%,transparent 50%),radial-gradient(ellipse at 50% 90%,rgba(100,60,180,0.06) 0%,transparent 50%);pointer-events:none;z-index:0;}
+  .stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+  .star{position:absolute;background:white;border-radius:50%;animation:twinkle var(--dur) ease-in-out infinite;}
+  @keyframes twinkle{0%,100%{opacity:0.2;transform:scale(1);}50%{opacity:1;transform:scale(1.3);}}
+  .container{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:40px 20px 80px;}
+  .header{text-align:center;margin-bottom:50px;animation:fadeDown 0.8s ease both;}
+  .site-name{font-family:'Cinzel',serif;font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;opacity:0.8;}
+  .title{font-family:'Cinzel',serif;font-size:clamp(26px,6vw,38px);color:var(--gold2);letter-spacing:3px;margin-bottom:10px;text-shadow:0 0 30px rgba(201,168,76,0.3);}
+  .subtitle{font-size:13px;color:rgba(240,234,220,0.5);letter-spacing:2px;}
+  .divider{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px auto;}
+  .free-badge{display:inline-block;background:linear-gradient(135deg,rgba(127,212,196,0.2),rgba(127,212,196,0.05));border:1px solid rgba(127,212,196,0.4);border-radius:20px;padding:6px 20px;font-family:'Cinzel',serif;font-size:11px;color:var(--teal2);letter-spacing:2px;margin-top:12px;}
+  .card{background:linear-gradient(135deg,rgba(26,32,64,0.9),rgba(15,22,40,0.95));border:1px solid rgba(201,168,76,0.2);border-radius:16px;padding:40px 36px;margin-bottom:30px;box-shadow:0 20px 60px rgba(0,0,0,0.4);animation:fadeUp 0.8s ease 0.2s both;}
+  .card-title{font-family:'Cinzel',serif;font-size:13px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;text-align:center;}
+  .card-subtitle{font-size:12px;color:rgba(240,234,220,0.4);text-align:center;letter-spacing:1px;margin-bottom:28px;}
+  .form-group{margin-bottom:20px;}
+  label{display:block;font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:10px;}
+  input[type="text"],input[type="date"]{width:100%;background:rgba(10,14,26,0.6);border:1px solid rgba(201,168,76,0.25);border-radius:8px;padding:14px 18px;color:var(--white);font-family:'Noto Serif JP',serif;font-size:15px;outline:none;transition:border-color 0.3s;}
+  input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.1);}
+  input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1) saturate(3) hue-rotate(5deg);cursor:pointer;}
+  .btn{width:100%;padding:16px;background:linear-gradient(135deg,#8a6a20,var(--gold),#8a6a20);background-size:200% 100%;border:none;border-radius:8px;color:var(--navy);font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:3px;cursor:pointer;transition:all 0.4s ease;margin-top:8px;}
+  .btn:hover{background-position:100% 0;box-shadow:0 8px 30px rgba(201,168,76,0.35);transform:translateY(-1px);}
+
+  /* ローディング */
+  .loading{display:none;text-align:center;padding:60px 20px;}
+  .loading-orb{width:80px;height:80px;margin:0 auto 24px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(127,212,196,0.6),rgba(60,80,180,0.3));animation:orbPulse 2s ease-in-out infinite;box-shadow:0 0 40px rgba(127,212,196,0.3);}
+  @keyframes orbPulse{0%,100%{transform:scale(1);box-shadow:0 0 40px rgba(127,212,196,0.3);}50%{transform:scale(1.1);box-shadow:0 0 60px rgba(127,212,196,0.5);}}
+  .loading-text{font-family:'Cinzel',serif;font-size:13px;color:var(--teal2);letter-spacing:3px;animation:blink 1.5s ease-in-out infinite;}
+  .loading-sub{font-size:12px;color:rgba(240,234,220,0.3);margin-top:8px;letter-spacing:1px;}
+  @keyframes blink{0%,100%{opacity:0.4;}50%{opacity:1;}}
+
+  /* 結果 */
+  #result{display:none;animation:fadeUp 0.6s ease both;}
+
+  /* メインカード */
+  .past-life-card{background:linear-gradient(135deg,rgba(20,30,60,0.98),rgba(10,15,30,0.99));border:1px solid rgba(127,212,196,0.3);border-radius:20px;padding:0;margin-bottom:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.5),0 0 60px rgba(127,212,196,0.05);}
+  .past-life-hero{padding:40px 36px 32px;text-align:center;border-bottom:1px solid rgba(127,212,196,0.1);position:relative;}
+  .past-life-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(127,212,196,0.4),transparent);}
+  .era-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;color:var(--teal);text-transform:uppercase;margin-bottom:16px;opacity:0.7;}
+  .past-era{font-family:'Cinzel',serif;font-size:clamp(22px,5vw,32px);color:var(--teal2);letter-spacing:3px;margin-bottom:8px;text-shadow:0 0 30px rgba(127,212,196,0.3);}
+  .past-place{font-size:14px;color:rgba(240,234,220,0.5);letter-spacing:2px;margin-bottom:24px;}
+
+  .soul-symbol{font-size:64px;margin:0 auto 20px;display:block;animation:float 4s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+  .past-job{font-family:'Cinzel',serif;font-size:18px;color:var(--gold2);letter-spacing:3px;margin-bottom:6px;}
+  .past-job-desc{font-size:12px;color:rgba(240,234,220,0.4);letter-spacing:2px;}
+
+  /* 詳細セクション */
+  .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(127,212,196,0.08);}
+  .detail-cell{background:rgba(10,15,30,0.98);padding:24px 28px;}
+  .detail-cell:nth-child(1){border-radius:0;}
+  .detail-label{font-family:'Cinzel',serif;font-size:10px;color:var(--teal);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;opacity:0.7;}
+  .detail-value{font-size:14px;color:rgba(240,234,220,0.85);line-height:1.7;}
+
+  /* メッセージ */
+  .message-section{background:linear-gradient(135deg,rgba(26,32,64,0.9),rgba(15,22,40,0.95));border:1px solid rgba(127,212,196,0.2);border-radius:16px;padding:36px;margin-bottom:20px;}
+  .message-title{font-family:'Cinzel',serif;font-size:12px;color:var(--teal2);letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(127,212,196,0.15);}
+  .message-text{font-size:14px;line-height:2.2;color:rgba(240,234,220,0.88);}
+  .message-text em{color:var(--teal2);font-style:normal;}
+
+  /* 特質タグ */
+  .trait-section{background:linear-gradient(135deg,rgba(26,32,64,0.9),rgba(15,22,40,0.95));border:1px solid rgba(201,168,76,0.2);border-radius:16px;padding:36px;margin-bottom:20px;}
+  .trait-title{font-family:'Cinzel',serif;font-size:12px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(201,168,76,0.15);}
+  .trait-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
+  .trait-tag{background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:20px;padding:8px 16px;font-size:12px;color:var(--gold2);letter-spacing:1px;}
+  .trait-desc{font-size:14px;line-height:2;color:rgba(240,234,220,0.75);}
+
+  /* シェアボタン */
+  .share-section{text-align:center;margin-bottom:24px;}
+  .share-text{font-size:12px;color:rgba(240,234,220,0.4);letter-spacing:1px;margin-bottom:16px;}
+  .share-btn{display:inline-block;background:rgba(127,212,196,0.1);border:1px solid rgba(127,212,196,0.3);border-radius:8px;color:var(--teal2);font-family:'Cinzel',serif;font-size:12px;letter-spacing:2px;padding:12px 28px;cursor:pointer;transition:all 0.3s;margin:0 6px 8px;}
+  .share-btn:hover{background:rgba(127,212,196,0.2);border-color:var(--teal2);}
+
+  /* 総合鑑定バナー */
+  .bundle-banner{background:linear-gradient(135deg,rgba(100,80,30,0.35),rgba(60,40,10,0.45));border:1px solid rgba(201,168,76,0.45);border-radius:16px;padding:40px 36px;text-align:center;margin-bottom:30px;position:relative;overflow:hidden;}
+  .bundle-banner::before{content:'✦　✦　✦';position:absolute;top:14px;left:50%;transform:translateX(-50%);color:var(--gold);font-size:10px;letter-spacing:8px;opacity:0.4;}
+  .bundle-label{font-family:'Cinzel',serif;font-size:10px;color:var(--teal2);letter-spacing:4px;text-transform:uppercase;margin-bottom:12px;margin-top:10px;opacity:0.8;}
+  .bundle-title{font-family:'Cinzel',serif;font-size:16px;color:var(--gold2);letter-spacing:3px;margin-bottom:12px;}
+  .bundle-desc{font-size:13px;color:rgba(240,234,220,0.6);line-height:1.9;margin-bottom:24px;}
+  .bundle-features{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:24px;}
+  .bundle-feature{font-size:12px;color:rgba(240,234,220,0.5);display:flex;align-items:center;gap:6px;}
+  .bundle-feature::before{content:'✦';color:var(--gold);font-size:9px;}
+  .bundle-price{font-family:'Cinzel',serif;font-size:26px;color:var(--gold);margin-bottom:6px;}
+  .bundle-price-sub{font-size:12px;color:rgba(240,234,220,0.4);margin-bottom:24px;}
+  .bundle-btn{display:inline-block;background:linear-gradient(135deg,#8a6a20,var(--gold),#8a6a20);background-size:200% 100%;border-radius:8px;color:var(--navy);font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:2px;padding:15px 40px;cursor:pointer;border:none;transition:all 0.4s;}
+  .bundle-btn:hover{background-position:100% 0;box-shadow:0 8px 30px rgba(201,168,76,0.4);transform:translateY(-1px);}
+
+  .retry-btn{width:100%;padding:14px;background:transparent;border:1px solid rgba(127,212,196,0.2);border-radius:8px;color:var(--teal2);font-family:'Cinzel',serif;font-size:12px;letter-spacing:3px;cursor:pointer;transition:all 0.3s;margin-bottom:20px;}
+  .retry-btn:hover{border-color:var(--teal2);background:rgba(127,212,196,0.05);}
+  .footer{text-align:center;margin-top:60px;padding-top:30px;border-top:1px solid rgba(201,168,76,0.1);}
+  .footer-logo{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:4px;opacity:0.5;margin-bottom:8px;}
+  .footer-text{font-size:11px;color:rgba(240,234,220,0.25);}
+  @keyframes fadeDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  @media(max-width:480px){
+    .card,.message-section,.trait-section,.bundle-banner{padding:28px 20px;}
+    .past-life-hero{padding:32px 20px 24px;}
+    .detail-cell{padding:20px;}
+    .detail-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="container">
+
+  <header class="header">
+    <div class="site-name">✦ Twinkle Star Oracle ✦</div>
+    <h1 class="title">前世リーディング</h1>
+    <div class="divider"></div>
+    <p class="subtitle">Past Life Reading</p>
+    <div class="free-badge">✦ 完全無料 ✦</div>
+  </header>
+
+  <div class="card">
+    <div class="card-title">✦ あなたの情報を入力 ✦</div>
+    <div class="card-subtitle">魂の記憶を読み解きます</div>
+    <div class="form-group">
+      <label>お名前</label>
+      <input type="text" id="name" placeholder="例：さくら" />
+    </div>
+    <div class="form-group">
+      <label>生年月日</label>
+      <input type="date" id="birthdate" />
+    </div>
+    <button class="btn" onclick="readPastLife()">✦ 前世を読み解く ✦</button>
+  </div>
+
+  <div class="loading" id="loading">
+    <div class="loading-orb"></div>
+    <div class="loading-text">魂の記憶を辿っています…</div>
+    <div class="loading-sub">時空を超えた旅をしています</div>
+  </div>
+
+  <div id="result">
+
+    <div class="past-life-card">
+      <div class="past-life-hero">
+        <div class="era-label">Your Past Life</div>
+        <div class="past-era" id="past-era">古代エジプト</div>
+        <div class="past-place" id="past-place">ナイル川流域・神殿の都市</div>
+        <div class="soul-symbol" id="soul-symbol">🌺</div>
+        <div class="past-job" id="past-job">神殿の巫女</div>
+        <div class="past-job-desc" id="past-job-desc">聖なる儀式を司る存在</div>
+      </div>
+      <div class="detail-grid">
+        <div class="detail-cell">
+          <div class="detail-label">時代</div>
+          <div class="detail-value" id="detail-era">紀元前1500年頃</div>
+        </div>
+        <div class="detail-cell">
+          <div class="detail-label">場所</div>
+          <div class="detail-value" id="detail-place">エジプト・テーベ</div>
+        </div>
+        <div class="detail-cell">
+          <div class="detail-label">魂のタイプ</div>
+          <div class="detail-value" id="detail-soul">神秘の魂</div>
+        </div>
+        <div class="detail-cell">
+          <div class="detail-label">前世での使命</div>
+          <div class="detail-value" id="detail-mission">神と人をつなぐ橋渡し</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="message-section">
+      <div class="message-title">✦ 前世からあなたへのメッセージ</div>
+      <div class="message-text" id="past-message"></div>
+    </div>
+
+    <div class="trait-section">
+      <div class="trait-title">✦ 前世から受け継いだ特質</div>
+      <div class="trait-tags" id="trait-tags"></div>
+      <div class="trait-desc" id="trait-desc"></div>
+    </div>
+
+    <div class="share-section">
+      <div class="share-text">あなたの前世をシェアしてみませんか？</div>
+      <button class="share-btn" onclick="shareResult()">✦ Xでシェアする</button>
+      <button class="share-btn" onclick="copyResult()">✦ コピーする</button>
+    </div>
+
+    <div class="bundle-banner">
+      <div class="bundle-label">Next Step</div>
+      <div class="bundle-title">✦ 今世の運命を深く読み解く ✦</div>
+      <p class="bundle-desc">前世がわかったら、今世での使命も知りたくなりませんか？<br>数秘術・タロット・バードオラクルを組み合わせた<br>総合鑑定で、あなたの今世の運命を完全解読します。</p>
+      <div class="bundle-features">
+        <span class="bundle-feature">数秘術鑑定</span>
+        <span class="bundle-feature">タロット3枚引き</span>
+        <span class="bundle-feature">バードオラクル</span>
+        <span class="bundle-feature">統合メッセージ</span>
+      </div>
+      <div class="bundle-price">¥1,980</div>
+      <div class="bundle-price-sub">通常 ¥3,000 → 特別価格</div>
+      <button class="bundle-btn">✦ 今世の運命を鑑定する ✦</button>
+    </div>
+
+    <button class="retry-btn" onclick="resetForm()">✦ もう一度占う ✦</button>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-logo">✦ TWINKLE STAR ORACLE ✦</div>
+    <p class="footer-text">© 2024 Twinkle Lab. All rights reserved.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  const c=document.getElementById('stars');
+  for(let i=0;i<80;i++){
+    const s=document.createElement('div');s.className='star';
+    const sz=Math.random()*2.5+0.5;
+    s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--dur:${Math.random()*4+2}s;animation-delay:${Math.random()*4}s;opacity:${Math.random()*0.5+0.1};`;
+    c.appendChild(s);
+  }
+})();
+
+const pastLives=[
+  {era:'古代エジプト',place:'ナイル川流域・テーベ',symbol:'🌺',job:'神殿の巫女',jobDesc:'聖なる儀式を司る存在',detailEra:'紀元前1500年頃',detailPlace:'エジプト・テーベ',soulType:'神秘の魂',mission:'神と人をつなぐ橋渡し',msg:'あなたはかつて、神々と人間の世界をつなぐ聖なる役割を担っていました。その魂は今世でも、目に見えないものへの深い感受性と、人々を導く力を持っています。\n\n古代の神殿で磨いた直感と霊的な感性は、今のあなたの中に確かに息づいています。誰かのために祈り、支えることに喜びを感じるのは、魂の奥深くに刻まれた記憶があるからです。',traits:['強い直感力','霊的な感受性','人を癒す力','神秘への親和性'],traitDesc:'前世で培った神聖なエネルギーが、今世でも多くの人を惹きつける魅力となっています。'},
+  {era:'平安時代の日本',place:'京の都・貴族の邸宅',symbol:'🌸',job:'宮廷歌人',jobDesc:'言葉で魂を紡ぐ者',detailEra:'1000年頃',detailPlace:'日本・京都',soulType:'表現の魂',mission:'美と言葉で世界を彩る',msg:'あなたはかつて、美しい言葉と詩歌で人々の心を動かしていました。月や花を愛で、感情を言葉に変える天才的な才能を持つ存在でした。\n\n今世でも、あなたには言葉や芸術を通じて人々の心に触れる力があります。美しいものへの深い感動、繊細な感受性、そして表現することへの衝動は、千年以上前から続く魂の特質です。',traits:['豊かな感受性','表現力と美的センス','繊細な観察眼','芸術的才能'],traitDesc:'美を感じ、言葉や芸術で表現することはあなたの魂が何世紀にもわたって磨いてきた才能です。'},
+  {era:'中世ヨーロッパ',place:'フランス・修道院',symbol:'📜',job:'修道士・錬金術師',jobDesc:'知識と真理を探求する者',detailEra:'13世紀頃',detailPlace:'フランス・パリ近郊',soulType:'探求の魂',mission:'知識で人類を導く',msg:'あなたはかつて、薄暗い修道院の中で真理を探求し続けた魂でした。本を愛し、星を観測し、目に見えない法則の中に神の意志を見出そうとしていました。\n\n今世でも、あなたには物事の本質を見抜く洞察力と、知識への飽くなき探求心があります。深く考え、学び続けることで、あなたの魂は本来の輝きを取り戻します。',traits:['深い知的好奇心','分析力と論理的思考','孤独を愛する内省力','真理への強い渇望'],traitDesc:'何世紀にもわたって蓄積された知識と洞察力が、今世のあなたの大きな強みとなっています。'},
+  {era:'古代ギリシャ',place:'アテネ・アゴラの広場',symbol:'🏛️',job:'哲学者・教師',jobDesc:'魂の真理を語る者',detailEra:'紀元前400年頃',detailPlace:'ギリシャ・アテネ',soulType:'叡智の魂',mission:'真実を問い続け、人々を導く',msg:'あなたはかつて、広場で人々に語りかけ、魂の真実について問い続けた存在でした。多くの弟子を持ち、その言葉は時代を超えて受け継がれました。\n\n今世でも、あなたには人を惹きつける話力と、本質を問う力があります。「なぜ」と問い続ける習慣は、古代から続くあなたの魂の特質です。',traits:['深い思索力','人を惹きつける存在感','本質を問う力','教え導く才能'],traitDesc:'古代の知恵が今世のあなたの中で生き続けており、人々に影響を与える力として発揮されます。'},
+  {era:'江戸時代の日本',place:'江戸・下町の長屋',symbol:'🏮',job:'町医者・薬師',jobDesc:'病に苦しむ人を救う者',detailEra:'1700年代',detailPlace:'日本・江戸（東京）',soulType:'奉仕の魂',mission:'人々の苦しみを和らげる',msg:'あなたはかつて、貧しい人々のために薬草を調合し、夜も眠れない患者のそばに寄り添い続けた魂でした。お金よりも人の命と笑顔を大切にした、献身的な存在でした。\n\n今世でも、あなたには誰かの役に立ちたいという強い思いと、困っている人を見過ごせない優しさがあります。それは前世から続く魂の本質です。',traits:['深い思いやりと共感力','奉仕の精神','責任感の強さ','人の痛みがわかる感受性'],traitDesc:'前世で磨いた癒しのエネルギーは今世でも多くの人を助け、支える力として生き続けています。'},
+  {era:'シルクロードの旅',place:'中央アジア・砂漠の交易路',symbol:'🐪',job:'商人・旅人',jobDesc:'世界をつなぐ冒険者',detailEra:'7〜8世紀頃',detailPlace:'中央アジア・サマルカンド',soulType:'冒険の魂',mission:'異文化をつなぎ、世界を広げる',msg:'あなたはかつて、砂漠の道を幾度も越え、東西の文化と人々をつないだ魂でした。危険を恐れず、新しい土地と人々との出会いに喜びを見出す、自由な魂の持ち主でした。\n\n今世でも、あなたには変化を恐れない柔軟性と、多様な人々と関わる社交性があります。どんな環境にも適応し、新しいことに喜びを感じるのは前世からの魂の記憶です。',traits:['変化への適応力','多様性を愛する心','行動力と冒険心','人をつなぐコミュニケーション力'],traitDesc:'何千マイルもの旅で培われた魂の柔軟性と開かれた心が、今世でも大きな財産となっています。'},
+  {era:'古代インド',place:'ガンジス川のほとり',symbol:'🪷',job:'ヨガの師・瞑想家',jobDesc:'魂の解放を求める賢者',detailEra:'紀元前500年頃',detailPlace:'インド・バラナシ',soulType:'悟りの魂',mission:'魂の本質に還り、道を示す',msg:'あなたはかつて、川のほとりで瞑想を深め、魂の真実を探求し続けた存在でした。多くの弟子に教えを授け、苦しみからの解放の道を示しました。\n\n今世でも、あなたには内側の世界への深い関心と、精神的な成長への強い意欲があります。スピリチュアルなことへの親和性と、深い平和を求める心は、何千年も前から続くあなたの魂の本質です。',traits:['深い内省力と精神性','平和を求める心','瞑想・直感への才能','魂の成長への意欲'],traitDesc:'古代から磨かれた精神的な叡智が今世でも内なる平和と人々への智慧として輝き続けます。'},
+  {era:'ルネサンス期イタリア',place:'フィレンツェ・芸術家工房',symbol:'🎨',job:'芸術家・画家',jobDesc:'美の真理を描く創造者',detailEra:'15世紀頃',detailPlace:'イタリア・フィレンツェ',soulType:'創造の魂',mission:'美を通じて神の意志を表現する',msg:'あなたはかつて、キャンバスの前で神の美しさを描こうとした魂でした。色と光の中に真実を求め、作品を通じて見る人の魂を揺さぶりました。\n\n今世でも、あなたには美に対する鋭い感覚と、何かを創り出すことへの情熱があります。芸術・音楽・デザイン・料理など、形は違っても「美しいものを生み出したい」という衝動はあなたの魂の核心です。',traits:['鋭い美的感覚','創造への情熱','完璧を求める意志','独自のビジョン'],traitDesc:'ルネサンスの工房で磨かれた美への眼差しと創造力が今世でもあなたの最大の才能として輝きます。'},
+  {era:'幕末の日本',place:'京都・志士たちの集う場所',symbol:'⚔️',job:'志士・改革者',jobDesc:'時代を変えようとした者',detailEra:'1860年代',detailPlace:'日本・京都',soulType:'変革の魂',mission:'古い世界を壊し、新しい時代を切り開く',msg:'あなたはかつて、命をかけて時代を変えようとした魂でした。不条理に怒り、理想のために動き、仲間と共に新しい世界を夢見ました。\n\n今世でも、あなたには現状に甘んじない強い意志と、正義感の強さがあります。変化を恐れず、信念のために行動できる力は前世から受け継いだ魂の刻印です。',traits:['強い意志と信念','正義感と行動力','仲間を大切にする義侠心','変革を恐れない勇気'],traitDesc:'命をかけた前世の経験が今世では揺るがない信念と行動力となり、あなたの大きな強みとなっています。'},
+];
+
+function calcSeed(name, dateStr) {
+  let hash = 0;
+  const str = name + dateStr;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash);
+}
+
+let currentResult = null;
+
+function readPastLife() {
+  const name = document.getElementById('name').value.trim() || 'あなた';
+  const birthdate = document.getElementById('birthdate').value;
+  if (!birthdate) { alert('生年月日を入力してください'); return; }
+
+  document.getElementById('form-card').style.display = 'none';
+  document.getElementById('loading').style.display = 'block';
+
+  setTimeout(() => {
+    const seed = calcSeed(name, birthdate);
+    const data = pastLives[seed % pastLives.length];
+    currentResult = { name, data };
+
+    document.getElementById('past-era').textContent = data.era;
+    document.getElementById('past-place').textContent = data.place;
+    document.getElementById('soul-symbol').textContent = data.symbol;
+    document.getElementById('past-job').textContent = data.job;
+    document.getElementById('past-job-desc').textContent = data.jobDesc;
+    document.getElementById('detail-era').textContent = data.detailEra;
+    document.getElementById('detail-place').textContent = data.detailPlace;
+    document.getElementById('detail-soul').textContent = data.soulType;
+    document.getElementById('detail-mission').textContent = data.mission;
+    document.getElementById('past-message').innerHTML = data.msg.replace(/\n/g, '<br>');
+    document.getElementById('trait-tags').innerHTML = data.traits.map(t => `<span class="trait-tag">${t}</span>`).join('');
+    document.getElementById('trait-desc').textContent = data.traitDesc;
+
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('result').style.display = 'block';
+    document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 2500);
+}
+
+function shareResult() {
+  if (!currentResult) return;
+  const { name, data } = currentResult;
+  const text = `【前世リーディング】\n${name}さんの前世は「${data.era}の${data.job}」でした！\n魂のタイプ：${data.soulType}\n\n✦ Twinkle Star Oracle で前世を調べてみよう\nhttps://twinkle-star-oracle.com`;
+  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
+}
+
+function copyResult() {
+  if (!currentResult) return;
+  const { name, data } = currentResult;
+  const text = `【前世リーディング】\n${name}さんの前世は「${data.era}の${data.job}」でした！\n魂のタイプ：${data.soulType}\n前世からの特質：${data.traits.join('・')}\n\n✦ Twinkle Star Oracleで前世を調べてみよう`;
+  navigator.clipboard.writeText(text).then(() => alert('コピーしました！'));
+}
+
+function resetForm() {
+  document.getElementById('result').style.display = 'none';
+  document.getElementById('form-card').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
