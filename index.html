@@ -252,35 +252,46 @@ function calcSeed(name, dateStr) {
 let currentResult = null;
 
 function readPastLife() {
-  const name = document.getElementById('name').value.trim() || 'あなた';
-  const birthdate = document.getElementById('birthdate').value;
-  if (!birthdate) { alert('生年月日を入力してください'); return; }
+  try {
+    const name = document.getElementById('name').value.trim() || 'あなた';
+    const birthdate = document.getElementById('birthdate').value;
+    if (!birthdate) { alert('生年月日を入力してください'); return; }
 
-  document.getElementById('form-card').style.display = 'none';
-  document.getElementById('loading').style.display = 'block';
+    document.getElementById('form-card').style.display = 'none';
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('result').style.display = 'none';
 
-  setTimeout(() => {
-    const seed = calcSeed(name, birthdate);
-    const data = pastLives[seed % pastLives.length];
-    currentResult = { name, data };
+    setTimeout(function() {
+      try {
+        const seed = calcSeed(name, birthdate);
+        const data = pastLives[seed % pastLives.length];
+        currentResult = { name: name, data: data };
 
-    document.getElementById('past-era').textContent = data.era;
-    document.getElementById('past-place').textContent = data.place;
-    document.getElementById('soul-symbol').textContent = data.symbol;
-    document.getElementById('past-job').textContent = data.job;
-    document.getElementById('past-job-desc').textContent = data.jobDesc;
-    document.getElementById('detail-era').textContent = data.detailEra;
-    document.getElementById('detail-place').textContent = data.detailPlace;
-    document.getElementById('detail-soul').textContent = data.soulType;
-    document.getElementById('detail-mission').textContent = data.mission;
-    document.getElementById('past-message').innerHTML = data.msg.replace(/\n/g, '<br>');
-    document.getElementById('trait-tags').innerHTML = data.traits.map(t => `<span class="trait-tag">${t}</span>`).join('');
-    document.getElementById('trait-desc').textContent = data.traitDesc;
+        document.getElementById('past-era').textContent = data.era;
+        document.getElementById('past-place').textContent = data.place;
+        document.getElementById('soul-symbol').innerHTML = data.symbol;
+        document.getElementById('past-job').textContent = data.job;
+        document.getElementById('past-job-desc').textContent = data.jobDesc;
+        document.getElementById('detail-era').textContent = data.detailEra;
+        document.getElementById('detail-place').textContent = data.detailPlace;
+        document.getElementById('detail-soul').textContent = data.soulType;
+        document.getElementById('detail-mission').textContent = data.mission;
+        document.getElementById('past-message').innerHTML = data.msg.replace(/\n/g, '<br>');
+        document.getElementById('trait-tags').innerHTML = data.traits.map(function(t){ return '<span class="trait-tag">' + t + '</span>'; }).join('');
+        document.getElementById('trait-desc').textContent = data.traitDesc;
 
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('result').style.display = 'block';
-    document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }, 2500);
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('result').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch(e) {
+        alert('エラーが発生しました: ' + e.message);
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('form-card').style.display = 'block';
+      }
+    }, 2500);
+  } catch(e) {
+    alert('エラーが発生しました: ' + e.message);
+  }
 }
 
 function shareResult() {
