@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -166,7 +167,7 @@ input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1
 
     <div class="msg-section">
       <div class="msg-title">✦ 前世からあなたへのメッセージ</div>
-      <div class="msg-text" id="js-msg"></div>
+      <div class="msg-text" id="js-msg"></div><div style="position:relative;margin-top:12px;"><div class="msg-text" id="js-msg-blur" style="filter:blur(5px);user-select:none;pointer-events:none;opacity:0.5;"></div><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,rgba(10,14,26,0.97) 50%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:16px;"><a href="https://lin.ee/XHDFrA8" target="_blank" style="background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.5);border-radius:8px;color:#e8c97a;font-family:Cinzel,serif;font-size:12px;letter-spacing:2px;padding:12px 24px;text-decoration:none;display:inline-block;">✦ 続きをLINEで受け取る（無料）</a></div></div>
     </div>
 
     <div class="trait-section">
@@ -275,7 +276,7 @@ document.getElementById('js-btn').addEventListener('click', function() {
     document.getElementById('js-detb').textContent = data.db;
     document.getElementById('js-detc').textContent = data.dc;
     document.getElementById('js-detd').textContent = data.dd;
-    document.getElementById('js-msg').innerHTML = data.msg.replace(/\n/g, '<br>');
+    var _fullMsg = data.msg.replace(/\n/g, '<br>'); var _half = Math.floor(_fullMsg.length/2); document.getElementById('js-msg').innerHTML = _fullMsg.substring(0,_half); document.getElementById('js-msg-blur').innerHTML = _fullMsg.substring(_half);
 
     var tagsHtml = '';
     for (var i = 0; i < data.traits.length; i++) {
