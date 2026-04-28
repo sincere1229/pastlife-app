@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -22,7 +21,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .divider{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px auto;}
 .free-badge{display:inline-block;background:rgba(127,212,196,0.1);border:1px solid rgba(127,212,196,0.4);border-radius:20px;padding:6px 20px;font-family:'Cinzel',serif;font-size:11px;color:var(--teal2);letter-spacing:2px;margin-top:12px;}
 
-/* フォーム */
 .card{background:linear-gradient(135deg,rgba(26,32,64,0.9),rgba(15,22,40,0.95));border:1px solid rgba(201,168,76,0.2);border-radius:16px;padding:40px 36px;margin-bottom:30px;box-shadow:0 20px 60px rgba(0,0,0,0.4);}
 .card-title{font-family:'Cinzel',serif;font-size:13px;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;text-align:center;}
 .card-subtitle{font-size:12px;color:rgba(240,234,220,0.4);text-align:center;letter-spacing:1px;margin-bottom:28px;}
@@ -34,14 +32,12 @@ input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1
 .btn{width:100%;padding:16px;background:linear-gradient(135deg,#8a6a20,var(--gold),#8a6a20);border:none;border-radius:8px;color:var(--navy);font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:3px;cursor:pointer;margin-top:8px;}
 .btn:hover{opacity:0.9;}
 
-/* ローディング */
 .loading{display:none;text-align:center;padding:60px 20px;}
 .loading-orb{width:80px;height:80px;margin:0 auto 24px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(127,212,196,0.6),rgba(60,80,180,0.3));animation:orbPulse 2s ease-in-out infinite;}
 @keyframes orbPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.1);}}
 .loading-text{font-family:'Cinzel',serif;font-size:13px;color:var(--teal2);letter-spacing:3px;}
 .loading-sub{font-size:12px;color:rgba(240,234,220,0.3);margin-top:8px;}
 
-/* 結果 */
 .result{display:none;}
 
 .result-hero{background:linear-gradient(135deg,rgba(20,30,60,0.98),rgba(10,15,30,0.99));border:1px solid rgba(127,212,196,0.3);border-radius:20px;margin-bottom:20px;overflow:hidden;}
@@ -52,7 +48,6 @@ input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1
 .r-symbol{font-size:60px;margin-bottom:16px;display:block;}
 .r-job{font-family:'Cinzel',serif;font-size:18px;color:var(--gold2);letter-spacing:2px;margin-bottom:4px;}
 .r-job-desc{font-size:12px;color:rgba(240,234,220,0.4);letter-spacing:1px;}
-
 .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(127,212,196,0.08);}
 .detail-cell{background:rgba(10,15,30,0.98);padding:20px 24px;}
 .detail-key{font-family:'Cinzel',serif;font-size:10px;color:var(--teal);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;opacity:0.7;}
@@ -68,10 +63,31 @@ input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1
 .trait-tag{background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--gold2);}
 .trait-desc{font-size:14px;line-height:2;color:rgba(240,234,220,0.75);}
 
-.share-section{text-align:center;margin-bottom:20px;}
-.share-note{font-size:12px;color:rgba(240,234,220,0.35);margin-bottom:14px;}
-.share-btn{display:inline-block;background:rgba(127,212,196,0.1);border:1px solid rgba(127,212,196,0.3);border-radius:8px;color:var(--teal2);font-family:'Cinzel',serif;font-size:12px;letter-spacing:2px;padding:11px 24px;cursor:pointer;margin:0 6px 8px;transition:all 0.3s;}
-.share-btn:hover{background:rgba(127,212,196,0.2);}
+/* 2択CTAグリッド */
+.two-cta{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.cta-pay{display:flex;flex-direction:column;align-items:center;background:linear-gradient(135deg,rgba(201,168,76,0.18),rgba(201,168,76,0.06));border:1px solid rgba(201,168,76,0.5);border-radius:12px;padding:14px 10px;text-decoration:none;transition:all 0.3s;text-align:center;}
+.cta-pay:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,0.25);}
+.cta-line{display:flex;flex-direction:column;align-items:center;background:transparent;border:1px solid rgba(240,234,220,0.12);border-radius:12px;padding:14px 10px;text-decoration:none;transition:all 0.3s;text-align:center;}
+.cta-line:hover{border-color:rgba(201,168,76,0.3);}
+
+/* ④ 有料拡張ブロック（恋愛・仕事・今世の課題） */
+.paid-expand{background:linear-gradient(135deg,rgba(20,30,60,0.98),rgba(10,15,30,0.99));border:1px solid rgba(127,212,196,0.25);border-radius:16px;margin-bottom:16px;overflow:hidden;}
+.paid-expand-header{padding:18px 24px;border-bottom:1px solid rgba(127,212,196,0.1);font-family:'Cinzel',serif;font-size:12px;color:var(--teal2);letter-spacing:3px;display:flex;align-items:center;gap:10px;}
+.paid-badge{background:linear-gradient(135deg,var(--gold),#8a6a20);color:var(--navy);font-size:9px;font-weight:700;padding:3px 8px;border-radius:20px;}
+.paid-preview{padding:20px 24px;position:relative;min-height:100px;}
+.paid-preview-text{font-size:14px;line-height:2;color:rgba(240,234,220,0.4);filter:blur(5px);user-select:none;pointer-events:none;}
+.paid-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,rgba(10,15,30,0.97) 45%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:16px;}
+
+/* 回遊導線 */
+.rec-section{margin-bottom:20px;}
+.rec-title{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:3px;text-align:center;margin-bottom:14px;opacity:0.8;}
+.rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.rec-card{background:linear-gradient(135deg,rgba(26,32,64,0.85),rgba(15,22,40,0.9));border:1px solid rgba(201,168,76,0.18);border-radius:12px;padding:14px 8px;text-align:center;text-decoration:none;display:block;transition:all 0.3s;}
+.rec-card:hover{transform:translateY(-3px);border-color:rgba(201,168,76,0.45);}
+.rec-icon{font-size:22px;margin-bottom:6px;display:block;}
+.rec-name{font-size:11px;color:var(--white);font-weight:500;margin-bottom:3px;}
+.rec-desc{font-size:10px;color:rgba(240,234,220,0.4);line-height:1.4;}
+.rec-free{display:inline-block;font-size:9px;padding:2px 7px;border-radius:8px;background:rgba(26,122,60,0.1);color:#7ac4a0;border:1px solid rgba(26,122,60,0.2);margin-top:5px;font-family:'Cinzel',serif;}
 
 .bundle{background:linear-gradient(135deg,rgba(100,80,30,0.3),rgba(60,40,10,0.4));border:1px solid rgba(201,168,76,0.4);border-radius:16px;padding:36px;text-align:center;margin-bottom:20px;}
 .bundle-title{font-family:'Cinzel',serif;font-size:15px;color:var(--gold2);letter-spacing:3px;margin-bottom:10px;}
@@ -79,9 +95,15 @@ input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1
 .bundle-feats{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
 .bundle-feat{font-size:12px;color:rgba(240,234,220,0.5);}
 .bundle-feat::before{content:'✦ ';color:var(--gold);font-size:9px;}
-.bundle-price{font-family:'Cinzel',serif;font-size:24px;color:var(--gold);margin-bottom:4px;}
+.bundle-price{font-family:'Cinzel',serif;font-size:28px;color:var(--gold);margin-bottom:4px;}
 .bundle-price-sub{font-size:12px;color:rgba(240,234,220,0.4);margin-bottom:20px;}
-.bundle-btn{background:linear-gradient(135deg,#8a6a20,var(--gold),#8a6a20);border:none;border-radius:8px;color:var(--navy);font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:2px;padding:14px 36px;cursor:pointer;}
+.bundle-btn{display:inline-block;background:linear-gradient(135deg,#8a6a20,var(--gold),#8a6a20);border:none;border-radius:8px;color:var(--navy);font-family:'Cinzel',serif;font-size:13px;font-weight:700;letter-spacing:2px;padding:14px 36px;cursor:pointer;text-decoration:none;transition:all 0.3s;}
+.bundle-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,0.3);}
+
+.share-section{text-align:center;margin-bottom:20px;}
+.share-note{font-size:12px;color:rgba(240,234,220,0.35);margin-bottom:14px;}
+.share-btn{display:inline-block;background:rgba(127,212,196,0.1);border:1px solid rgba(127,212,196,0.3);border-radius:8px;color:var(--teal2);font-family:'Cinzel',serif;font-size:12px;letter-spacing:2px;padding:11px 24px;cursor:pointer;margin:0 6px 8px;transition:all 0.3s;}
+.share-btn:hover{background:rgba(127,212,196,0.2);}
 
 .retry-btn{width:100%;padding:13px;background:transparent;border:1px solid rgba(127,212,196,0.2);border-radius:8px;color:var(--teal2);font-family:'Cinzel',serif;font-size:12px;letter-spacing:3px;cursor:pointer;margin-bottom:20px;}
 
@@ -92,20 +114,19 @@ input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1
 @media(max-width:480px){
   .card,.msg-section,.trait-section,.bundle{padding:24px 18px;}
   .detail-grid{grid-template-columns:1fr;}
+  .paid-expand-header,.paid-preview{padding-left:18px;padding-right:18px;}
 }
 </style>
 </head>
 <body>
-<!-- Twinkle Star Oracle ヘッダー -->
+<!-- ヘッダー -->
 <div style="position:sticky;top:0;z-index:1000;background:linear-gradient(135deg,rgba(10,14,26,0.97),rgba(15,20,40,0.98));border-bottom:1px solid rgba(201,168,76,0.2);padding:10px 20px;display:flex;align-items:center;justify-content:space-between;">
   <a href="https://twinkle-lab.jp/star" style="font-size:12px;color:rgba(201,168,76,0.7);text-decoration:none;letter-spacing:1px;">← ポータルに戻る</a>
   <div style="font-family:Cinzel,serif;font-size:12px;color:#c9a84c;letter-spacing:2px;text-align:center;">✦ Twinkle Star Oracle ✦</div>
   <a href="https://twinkle-lab.jp/star/sogo" style="font-size:11px;color:rgba(201,168,76,0.7);text-decoration:none;letter-spacing:1px;">完全鑑定</a>
 </div>
 
-
 <div class="stars" id="js-stars"></div>
-
 <div class="container">
 
   <header class="header">
@@ -116,7 +137,6 @@ input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1
     <div class="free-badge">✦ 完全無料 ✦</div>
   </header>
 
-  <!-- 入力フォーム -->
   <div id="js-form">
     <div class="card">
       <div class="card-title">✦ あなたの情報を入力 ✦</div>
@@ -133,24 +153,33 @@ input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1
     </div>
   </div>
 
-  <!-- ローディング -->
   <div class="loading" id="js-loading">
     <div class="loading-orb"></div>
     <div class="loading-text">魂の記憶を辿っています…</div>
     <div class="loading-sub">時空を超えた旅をしています</div>
   </div>
 
-  <!-- 結果 -->
   <div class="result" id="js-result">
 
-<!-- 上部CTA（結果表示直後） -->
-<div style="background:linear-gradient(135deg,rgba(100,60,140,0.3),rgba(60,30,80,0.4));border:1px solid rgba(201,168,76,0.35);border-radius:14px;padding:20px;margin-bottom:20px;text-align:center;">
-  <div style="font-size:12px;color:rgba(240,234,220,0.5);letter-spacing:1px;margin-bottom:6px;">ここまでは表面の結果です</div>
-  <div style="font-size:15px;color:#f5e0a0;font-weight:500;margin-bottom:14px;">🔮 本当の運命はここからです</div>
-  <a href="https://lin.ee/XHDFrA8" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#8a6a20,#c9a84c,#8a6a20);background-size:200% 100%;border-radius:8px;color:#0a0e1a;font-family:Cinzel,serif;font-size:13px;font-weight:700;letter-spacing:1px;padding:13px 28px;text-decoration:none;">🌟 恋愛・仕事・金運の完全診断を無料で受け取る</a>
-</div>
+    <!-- ② 上部CTA：¥500直課金 + LINE 2択 -->
+    <div style="background:linear-gradient(135deg,rgba(100,60,140,0.3),rgba(60,30,80,0.4));border:1px solid rgba(201,168,76,0.35);border-radius:14px;padding:20px;margin-bottom:20px;text-align:center;">
+      <div style="font-size:12px;color:rgba(240,234,220,0.5);letter-spacing:1px;margin-bottom:6px;">ここまでは表面の結果です</div>
+      <div style="font-size:15px;color:#f5e0a0;font-weight:500;margin-bottom:14px;">🔮 本当の運命はここからです</div>
+      <div class="two-cta">
+        <a href="https://buy.stripe.com/00w14g2j46C66oBcFl33W04" target="_blank" class="cta-pay">
+          <div style="font-size:9px;color:rgba(201,168,76,0.7);letter-spacing:2px;margin-bottom:4px;">即・結果表示</div>
+          <div style="font-size:13px;color:var(--white);font-weight:600;margin-bottom:4px;">今すぐ続きを見る</div>
+          <div style="font-family:'Cinzel',serif;font-size:20px;color:var(--gold);font-weight:700;">¥500</div>
+        </a>
+        <a href="https://lin.ee/XHDFrA8" target="_blank" class="cta-line">
+          <div style="font-size:9px;color:rgba(240,234,220,0.4);letter-spacing:2px;margin-bottom:4px;">完全無料</div>
+          <div style="font-size:13px;color:rgba(240,234,220,0.7);margin-bottom:4px;">あとで受け取る</div>
+          <div style="font-family:'Cinzel',serif;font-size:20px;color:#7ac4a0;font-weight:700;">¥0</div>
+        </a>
+      </div>
+    </div>
 
-
+    <!-- 前世ヒーロー -->
     <div class="result-hero">
       <div class="result-hero-top">
         <div class="era-label">Your Past Life</div>
@@ -161,34 +190,68 @@ input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1
         <div class="r-job-desc" id="js-jobdesc"></div>
       </div>
       <div class="detail-grid">
-        <div class="detail-cell">
-          <div class="detail-key">時代</div>
-          <div class="detail-val" id="js-deta"></div>
-        </div>
-        <div class="detail-cell">
-          <div class="detail-key">場所</div>
-          <div class="detail-val" id="js-detb"></div>
-        </div>
-        <div class="detail-cell">
-          <div class="detail-key">魂のタイプ</div>
-          <div class="detail-val" id="js-detc"></div>
-        </div>
-        <div class="detail-cell">
-          <div class="detail-key">前世での使命</div>
-          <div class="detail-val" id="js-detd"></div>
+        <div class="detail-cell"><div class="detail-key">時代</div><div class="detail-val" id="js-deta"></div></div>
+        <div class="detail-cell"><div class="detail-key">場所</div><div class="detail-val" id="js-detb"></div></div>
+        <div class="detail-cell"><div class="detail-key">魂のタイプ</div><div class="detail-val" id="js-detc"></div></div>
+        <div class="detail-cell"><div class="detail-key">前世での使命</div><div class="detail-val" id="js-detd"></div></div>
+      </div>
+    </div>
+
+    <!-- ①⑤ メッセージ：35%のみ表示・65%ブラー -->
+    <div class="msg-section">
+      <div class="msg-title">✦ 前世からあなたへのメッセージ</div>
+      <div class="msg-text" id="js-msg"></div>
+      <div style="position:relative;margin-top:12px;">
+        <div class="msg-text" id="js-msg-blur" style="filter:blur(6px);user-select:none;pointer-events:none;opacity:0.4;"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,rgba(10,14,26,0.98) 38%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:16px;">
+          <a href="https://buy.stripe.com/00w14g2j46C66oBcFl33W04" target="_blank" style="background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.5);border-radius:8px;color:#e8c97a;font-family:Cinzel,serif;font-size:12px;letter-spacing:2px;padding:12px 24px;text-decoration:none;display:inline-block;">✦ 今すぐ続きを見る（¥500）</a>
         </div>
       </div>
     </div>
 
-    <div class="msg-section">
-      <div class="msg-title">✦ 前世からあなたへのメッセージ</div>
-      <div class="msg-text" id="js-msg"></div><div style="position:relative;margin-top:12px;"><div class="msg-text" id="js-msg-blur" style="filter:blur(5px);user-select:none;pointer-events:none;opacity:0.5;"></div><div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,rgba(10,14,26,0.97) 50%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:16px;"><a href="https://lin.ee/XHDFrA8" target="_blank" style="background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.5);border-radius:8px;color:#e8c97a;font-family:Cinzel,serif;font-size:12px;letter-spacing:2px;padding:12px 24px;text-decoration:none;display:inline-block;">🌟 恋愛・仕事・金運の完全診断を無料で受け取る</a></div></div>
-    </div>
-
+    <!-- ① 特質セクション：タグのみ表示・説明はブラー -->
     <div class="trait-section">
       <div class="trait-title">✦ 前世から受け継いだ特質</div>
       <div class="trait-tags" id="js-tags"></div>
-      <div class="trait-desc" id="js-traitdesc"></div>
+      <div style="position:relative;">
+        <div class="trait-desc" id="js-traitdesc" style="filter:blur(5px);user-select:none;pointer-events:none;opacity:0.4;"></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 0%,rgba(15,22,40,0.97) 40%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:12px;">
+          <a href="https://buy.stripe.com/00w14g2j46C66oBcFl33W04" target="_blank" style="background:transparent;border:1px solid rgba(201,168,76,0.4);border-radius:20px;color:rgba(201,168,76,0.8);font-family:Cinzel,serif;font-size:11px;letter-spacing:2px;padding:8px 20px;text-decoration:none;">✦ 特質の詳細を見る（¥500）</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ 有料拡張：恋愛への影響 -->
+    <div class="paid-expand">
+      <div class="paid-expand-header">✦ 前世が今世の恋愛に与える影響 <span class="paid-badge">PREMIUM</span></div>
+      <div class="paid-preview">
+        <p class="paid-preview-text">あなたの前世での愛の記憶が、今世の恋愛パターンに深く刻まれています。かつての魂の契約と、今世で出会うべき相手との深いつながりについてお伝えします。あなたが恋愛で繰り返すパターンの本当の理由と...</p>
+        <div class="paid-overlay">
+          <a href="https://buy.stripe.com/00w14g2j46C66oBcFl33W04" target="_blank" style="background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.5);border-radius:8px;color:#e8c97a;font-family:Cinzel,serif;font-size:12px;letter-spacing:2px;padding:10px 22px;text-decoration:none;display:inline-block;">✦ 今すぐ続きを見る（¥500）</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ 有料拡張：仕事の使命 -->
+    <div class="paid-expand">
+      <div class="paid-expand-header">✦ 前世から受け継いだ仕事の使命 <span class="paid-badge">PREMIUM</span></div>
+      <div class="paid-preview">
+        <p class="paid-preview-text">前世で磨かれた魂のスキルが、今世の仕事と使命にどう活かされるかをお伝えします。あなたが本当に輝ける天職と、魂レベルで引き寄せられるキャリアの方向性について...</p>
+        <div class="paid-overlay">
+          <a href="https://buy.stripe.com/00w14g2j46C66oBcFl33W04" target="_blank" style="background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.5);border-radius:8px;color:#e8c97a;font-family:Cinzel,serif;font-size:12px;letter-spacing:2px;padding:10px 22px;text-decoration:none;display:inline-block;">✦ 今すぐ続きを見る（¥500）</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ 有料拡張：今世の課題 -->
+    <div class="paid-expand">
+      <div class="paid-expand-header">✦ 今世で乗り越えるべきカルマの課題 <span class="paid-badge">PREMIUM</span></div>
+      <div class="paid-preview">
+        <p class="paid-preview-text">前世で解決できなかったカルマが今世の課題として現れています。人間関係・お金・健康・自己表現など、繰り返し直面する問題の根本原因と、その解放の方法について...</p>
+        <div class="paid-overlay">
+          <a href="https://buy.stripe.com/00w14g2j46C66oBcFl33W04" target="_blank" style="background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.05));border:1px solid rgba(201,168,76,0.5);border-radius:8px;color:#e8c97a;font-family:Cinzel,serif;font-size:12px;letter-spacing:2px;padding:10px 22px;text-decoration:none;display:inline-block;">✦ 今すぐ続きを見る（¥500）</a>
+        </div>
+      </div>
     </div>
 
     <div class="share-section">
@@ -197,18 +260,69 @@ input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1
       <button class="share-btn" id="js-share-copy">✦ コピーする</button>
     </div>
 
-    <div class="bundle">
-      <div class="bundle-title">✦ 今世の運命を深く読み解く ✦</div>
-      <p class="bundle-desc">前世がわかったら、今世での使命も知りたくなりませんか？<br>数秘術・タロット・バードオラクルを組み合わせた<br>総合鑑定で、あなたの今世の運命を完全解読します。</p>
-      <div class="bundle-feats">
-        <span class="bundle-feat">数秘術鑑定</span>
-        <span class="bundle-feat">タロット3枚引き</span>
-        <span class="bundle-feat">バードオラクル</span>
-        <span class="bundle-feat">統合メッセージ</span>
+    <!-- 下部CTA（強め）：2択 + ¥1,980 -->
+    <div style="background:linear-gradient(135deg,rgba(26,32,64,0.95),rgba(15,22,40,0.98));border:1px solid rgba(201,168,76,0.35);border-radius:16px;padding:24px;margin-bottom:16px;text-align:center;">
+      <div style="font-family:'Cinzel',serif;font-size:12px;color:var(--gold);letter-spacing:3px;margin-bottom:16px;">✦ もっと深く知りたい方へ ✦</div>
+      <div class="two-cta" style="margin-bottom:12px;">
+        <a href="https://buy.stripe.com/00w14g2j46C66oBcFl33W04" target="_blank" class="cta-pay">
+          <div style="font-size:9px;color:rgba(201,168,76,0.7);letter-spacing:2px;margin-bottom:4px;">即・結果表示</div>
+          <div style="font-size:12px;color:var(--white);font-weight:600;margin-bottom:6px;">今すぐ続きを見る</div>
+          <div style="font-family:'Cinzel',serif;font-size:20px;color:var(--gold);">¥500</div>
+          <div style="margin-top:8px;background:linear-gradient(135deg,#8a6a20,var(--gold));color:var(--navy);font-size:11px;font-weight:700;border-radius:8px;padding:6px 12px;">今すぐ鑑定する</div>
+        </a>
+        <a href="https://lin.ee/XHDFrA8" target="_blank" class="cta-line">
+          <div style="font-size:9px;color:rgba(240,234,220,0.4);letter-spacing:2px;margin-bottom:4px;">完全無料</div>
+          <div style="font-size:12px;color:rgba(240,234,220,0.7);margin-bottom:6px;">じっくり知りたい方へ</div>
+          <div style="font-family:'Cinzel',serif;font-size:20px;color:#7ac4a0;">¥0</div>
+          <div style="margin-top:8px;background:linear-gradient(135deg,#1a7a3c,#2a8a50);color:#fff;font-size:11px;font-weight:700;border-radius:8px;padding:6px 12px;">💬 無料で受け取る</div>
+        </a>
       </div>
-      <div class="bundle-price">¥1,980</div>
-      <div class="bundle-price-sub">通常 ¥3,000 → 特別価格</div>
-      <button class="bundle-btn">✦ 今世の運命を鑑定する ✦</button>
+      <!-- ③ ¥1,980直課金（/star/sogoへ） -->
+      <a href="https://buy.stripe.com/14A8wIbTEf8C9ANfRx33W03" target="_blank" style="display:block;background:linear-gradient(135deg,rgba(100,60,140,0.2),rgba(60,30,80,0.15));border:1px solid rgba(155,89,182,0.35);border-radius:12px;padding:14px 16px;text-decoration:none;text-align:center;transition:all 0.3s;margin-bottom:10px;">
+        <div style="font-size:10px;color:#c4a8f0;letter-spacing:2px;margin-bottom:3px;">3テーマ詳細鑑定</div>
+        <div style="font-size:13px;color:var(--white);font-weight:500;">しっかり知りたい方へ（¥1,980）</div>
+        <div style="font-size:11px;color:rgba(240,234,220,0.4);margin-top:3px;">恋愛・仕事・金運をまとめて · 即時表示</div>
+      </a>
+    </div>
+
+    <!-- AI総合鑑定（¥3,980・直リンク） -->
+    <div class="bundle">
+      <div class="bundle-title">✦ AI総合鑑定 ✦</div>
+      <p class="bundle-desc">前世がわかったら、今世での使命も知りたくなりませんか？<br>ホロスコープ＋四柱推命＋タロット3枚＋数秘術<br>過去・現在・未来をAIが完全解析します。</p>
+      <div class="bundle-feats">
+        <span class="bundle-feat">ホロスコープ図面</span>
+        <span class="bundle-feat">四柱推命</span>
+        <span class="bundle-feat">タロット3枚</span>
+        <span class="bundle-feat">数秘術</span>
+      </div>
+      <div class="bundle-price">¥3,980</div>
+      <div class="bundle-price-sub">即時表示 · PDFダウンロード付き · 🔒 安全な決済</div>
+      <a href="https://twinkle-lab.jp/star/sogo" class="bundle-btn">✦ AI総合鑑定を受ける ✦</a>
+    </div>
+
+    <!-- 回遊導線 -->
+    <div class="rec-section">
+      <div class="rec-title">✦ あなたにおすすめの占い ✦</div>
+      <div class="rec-grid">
+        <a href="https://tarot-app-rouge.vercel.app" target="_blank" class="rec-card">
+          <span class="rec-icon">🃏</span>
+          <div class="rec-name">タロット占い</div>
+          <div class="rec-desc">今の状況をカードが教える</div>
+          <span class="rec-free">FREE</span>
+        </a>
+        <a href="https://numerology-app-lovat.vercel.app" target="_blank" class="rec-card">
+          <span class="rec-icon">🔢</span>
+          <div class="rec-name">数秘術</div>
+          <div class="rec-desc">運命数から使命を知る</div>
+          <span class="rec-free">FREE</span>
+        </a>
+        <a href="https://aicompat-app.vercel.app" target="_blank" class="rec-card">
+          <span class="rec-icon">💕</span>
+          <div class="rec-name">相性占い</div>
+          <div class="rec-desc">2人の運命スコアを算出</div>
+          <span class="rec-free">FREE</span>
+        </a>
+      </div>
     </div>
 
     <button class="retry-btn" id="js-retry">✦ もう一度占う ✦</button>
@@ -217,22 +331,18 @@ input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1
 
   <footer class="footer">
     <div class="footer-logo">✦ TWINKLE STAR ORACLE ✦</div>
-    <p class="footer-text">© 2024 Twinkle Lab. All rights reserved.</p>
+    <p class="footer-text">© 2026 Twinkle Lab. All rights reserved.</p>
   </footer>
-
 </div>
 
 <script>
-// 星生成
 var starsEl = document.getElementById('js-stars');
 for (var i = 0; i < 80; i++) {
   var s = document.createElement('div');
   s.className = 'star';
   var sz = Math.random() * 2.5 + 0.5;
-  s.style.width = sz + 'px';
-  s.style.height = sz + 'px';
-  s.style.top = Math.random() * 100 + '%';
-  s.style.left = Math.random() * 100 + '%';
+  s.style.width = sz + 'px'; s.style.height = sz + 'px';
+  s.style.top = Math.random() * 100 + '%'; s.style.left = Math.random() * 100 + '%';
   s.style.setProperty('--dur', (Math.random() * 4 + 2) + 's');
   s.style.animationDelay = Math.random() * 4 + 's';
   s.style.opacity = Math.random() * 0.5 + 0.1;
@@ -267,10 +377,7 @@ function calcSeed(name, dateStr) {
 document.getElementById('js-btn').addEventListener('click', function() {
   var name = document.getElementById('js-name').value.trim() || 'あなた';
   var birth = document.getElementById('js-birth').value;
-  if (!birth) {
-    alert('生年月日を入力してください');
-    return;
-  }
+  if (!birth) { alert('生年月日を入力してください'); return; }
 
   currentName = name;
   document.getElementById('js-form').style.display = 'none';
@@ -291,8 +398,14 @@ document.getElementById('js-btn').addEventListener('click', function() {
     document.getElementById('js-detb').textContent = data.db;
     document.getElementById('js-detc').textContent = data.dc;
     document.getElementById('js-detd').textContent = data.dd;
-    var _fullMsg = data.msg.replace(/\n/g, '<br>'); var _half = Math.floor(_fullMsg.length/2); document.getElementById('js-msg').innerHTML = _fullMsg.substring(0,_half); document.getElementById('js-msg-blur').innerHTML = _fullMsg.substring(_half);
 
+    // ⑤ メッセージ：35%のみ表示（65%ブラー）
+    var _fullMsg = data.msg.replace(/\n/g, '<br>');
+    var _show = Math.floor(_fullMsg.length * 0.35);
+    document.getElementById('js-msg').innerHTML = _fullMsg.substring(0, _show);
+    document.getElementById('js-msg-blur').innerHTML = _fullMsg.substring(_show);
+
+    // ① 特質：タグは全表示・説明はブラー
     var tagsHtml = '';
     for (var i = 0; i < data.traits.length; i++) {
       tagsHtml += '<span class="trait-tag">' + data.traits[i] + '</span>';
@@ -329,13 +442,13 @@ document.getElementById('js-share-copy').addEventListener('click', function() {
 });
 </script>
 
-<!-- 固定LINEバナー -->
-<div id="fixed-line-banner" style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:linear-gradient(135deg,#1a0a20,#0a0e1a);border-top:1px solid rgba(201,168,76,0.4);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 -4px 20px rgba(0,0,0,0.4);">
+<!-- 固定バナー：¥500直課金に変更 -->
+<div style="position:fixed;bottom:0;left:0;right:0;z-index:9999;background:linear-gradient(135deg,#1a0a20,#0a0e1a);border-top:1px solid rgba(201,168,76,0.4);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 -4px 20px rgba(0,0,0,0.4);">
   <div style="flex:1;">
-    <div style="font-size:11px;color:rgba(240,234,220,0.5);letter-spacing:1px;margin-bottom:2px;">🌟 完全無料</div>
-    <div style="font-size:13px;color:#f0eadc;font-weight:500;line-height:1.4;">恋愛・仕事・金運の完全診断を受け取る</div>
+    <div style="font-size:11px;color:rgba(240,234,220,0.5);letter-spacing:1px;margin-bottom:2px;">🔮 即・結果表示</div>
+    <div style="font-size:13px;color:#f0eadc;font-weight:500;line-height:1.4;">今すぐ続きを見る（¥500）</div>
   </div>
-  <a href="https://lin.ee/XHDFrA8" target="_blank" style="background:linear-gradient(135deg,#8a6a20,#c9a84c,#8a6a20);background-size:200% 100%;border:none;border-radius:8px;color:#0a0e1a;font-family:Cinzel,serif;font-size:12px;font-weight:700;letter-spacing:1px;padding:12px 20px;text-decoration:none;white-space:nowrap;flex-shrink:0;">無料で受け取る →</a>
+  <a href="https://buy.stripe.com/00w14g2j46C66oBcFl33W04" target="_blank" style="background:linear-gradient(135deg,#8a6a20,#c9a84c,#8a6a20);background-size:200% 100%;border:none;border-radius:8px;color:#0a0e1a;font-family:Cinzel,serif;font-size:12px;font-weight:700;letter-spacing:1px;padding:12px 20px;text-decoration:none;white-space:nowrap;flex-shrink:0;">今すぐ鑑定する →</a>
 </div>
 <div style="height:70px;"></div>
 </body>
